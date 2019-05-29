@@ -39,7 +39,30 @@ app.get('/weather', (req, res) => {
         forcast: 'Sunny 70'
     })
 })
-
+app.get('/products',(req,res)=>{
+    console.log(req.query)
+    if(!req.query.search){
+    return res.send({
+        error:'You must provide a search term'
+    })
+    }
+    res.send({
+        products:[]
+    })
+    
+})
+app.get('/help/*',(req,res)=>{
+res.render('404',{
+    title:"404",
+    message:'Not able to find that help article'
+})
+})
+app.get('*',(req,res)=>{
+    res.render('404',{
+        title:"404",
+        message:'Not able to find that article'
+    })
+})
 app.listen(8080, () => {
     console.log('server is up on port 8080')
 })

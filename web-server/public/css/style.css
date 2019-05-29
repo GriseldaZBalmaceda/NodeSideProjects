@@ -1,9 +1,57 @@
 h1{
-    color:Blue;
+    color:white;
 }
 footer{
     display: block;
     bottom: 0;
     position: fixed;
     width: 100%
+}
+img{
+    height: 100%;
+    width:100%;
+}
+body{
+    margin: 0;
+   
+}
+.topContainer{
+height: 200px;
+width: 100%;
+position: relative;
+top:0
+}
+nav{ 
+z-index: 9999;
+padding: 9px;
+position: absolute;
+top: 0;
+right: 0;
+TEXT-ALIGN: CENTER;
+background-color: #e478782e;
+width: 20%;    
+}
+li{
+    float: left
+}
+nav>a{
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+.title{
+    position: absolute;
+    TEXT-ALIGN: CENTER;
+ top:1px;
+    left: 0;
+    right: 0;
+    font-size: 50px;
+    letter-spacing: 2px;
+    font-family: 'Anton', sans-serif;
+    /* font-family: 'Nobile', sans-serif;
+    font-family: 'Yeseva One', cursive;
+    font-family: 'Montserrat Subrayada', sans-serif; */
 }
