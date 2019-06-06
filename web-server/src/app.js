@@ -1,7 +1,9 @@
 const express = require('express')
 const path = require('path')
 const app = express();
-const hbs=require('hbs')
+const hbs=require('hbs');
+const geocode= require('../util/geocode')
+const forecast = require('../util/forecast')
 //define paths for express
 const publicDirPath = path.join(__dirname, '../public');
 const viewsPath = path.join(__dirname,'../templates/views')
@@ -34,11 +36,30 @@ app.get('/help',(req,res)=>{
     })
 })
 app.get('/weather', (req, res) => {
+    if(!req.query.address){
+        return res.send({
+            error:'You must provide an address'
+        })
+    }
+    geocode(req.query.address,(error,{latitude,longitude,location})=>{
+        if(error){
+        return res.send({error})
+        }
+forecast(latitude,longitude,(error,forecastData)=>{
+    if(error){
+        return res.send({error})
+    }
     res.send({
-        locationName: 'New York',
-        forcast: 'Sunny 70'
+        forecast:forecastData,
+        location,
+        address:req.query.address
+
     })
 })
+})
+
+})
+
 app.get('/products',(req,res)=>{
     console.log(req.query)
     if(!req.query.search){
